@@ -3,28 +3,51 @@ import './App.css'
 import { useState } from 'react'
 
 import Todos from './data/Todos'
-import Todo from './models/Todo'
+import type Todo from './models/Todo'
 import { AddNewTodo } from './components/AddNewTodo'
 import { DisplayTodo } from './components/DisplayTodo'
 
-/** === App Component ===
+/**
+ * === App Component ===
  * Root component of the Todo application.
- * Manages state for todos and renders both form and list.
+ * Initializes todos from localStorage or mock data,
+ * and handles creation and updating of todos.
  *
  * @component
  * @returns {JSX.Element} The main layout with form input and displayed todos.
  */
 function App() {
   // === STATE ===
-  const [myTodos, setMyTodos] = useState<Todo[]>([...Todos])
+  const [myTodos, setMyTodos] = useState<Todo[]>(() => {
+    const saved = localStorage.getItem('myTodos')
+    if (saved) {
+      return JSON.parse(saved)
+    } else {
+      const initialTodos = [...Todos]
+      localStorage.setItem('myTodos', JSON.stringify(initialTodos))
+      return initialTodos
+    }
+  })
 
   /**
-   * Adds a new Todo to the top of the list.
+   * Saves todos to both state and localStorage.
+   *
+   * @param {Todo[]} todos - Array of Todo objects to save.
+   */
+  const saveTodos = (todos: Todo[]) => {
+    setMyTodos(todos)
+    localStorage.setItem('myTodos', JSON.stringify(todos))
+    console.log('Saved todos:', todos)
+  }
+
+  /**
+   * Adds a new Todo to the top of the list and persists the change.
    *
    * @param {Todo} todo - The Todo object to add.
    */
   const handleAdd = (todo: Todo) => {
-    setMyTodos((prev) => [todo, ...prev])
+    const updated = [todo, ...myTodos]
+    saveTodos(updated)
   }
 
   /**
@@ -34,17 +57,16 @@ function App() {
    * @param {string} id - The ID of the Todo to toggle.
    */
   const toggleCompleted = (id: string) => {
-    setMyTodos((prev) =>
-      prev.map((todo) =>
-        todo.id === id
-          ? {
-              ...todo,
-              completed: !todo.completed,
-              completedAt: !todo.completed ? new Date() : undefined,
-            }
-          : todo
-      )
+    const updated = myTodos.map((todo) =>
+      todo.id === id
+        ? {
+            ...todo,
+            completed: !todo.completed,
+            completedAt: !todo.completed ? new Date() : undefined,
+          }
+        : todo
     )
+    saveTodos(updated)
   }
 
   // === RENDER ===
