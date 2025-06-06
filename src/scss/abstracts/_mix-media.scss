@@ -1,0 +1,29 @@
+// @abstracts/_mix-media.scss
+
+// === IMPORTS ===
+@use 'sass:map';
+@use 'var-breakpoints' as *;
+
+/**
+ * @mixin mix-media
+ * Creates a media query for the given breakpoint using `min-width`.
+ * Pulls values from the `$breakpoints` map defined in `@abstracts/variables/breakpoints`.
+ *
+ * @param {String} $device - The name of the breakpoint, e.g., "tablet", "laptop".
+ *
+ * @example
+ *   @include mix-media(tablet) {
+ *     font-size: 1.25rem;
+ *   }
+ */
+@mixin mix-media($device) {
+  $query: map.get($breakpoints, $device);
+
+  @if $query == null {
+    @error "Breakpoint '#{$device}' not found in bp.$breakpoints.";
+  }
+
+  @media (min-width: $query) {
+    @content;
+  }
+}
