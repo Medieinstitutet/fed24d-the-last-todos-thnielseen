@@ -1,0 +1,84 @@
+// @base/_reset.scss
+
+// Remove default box-sizing, margin, and padding
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Reset table spacing
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Reset list styles
+ul,
+ol {
+  list-style: none;
+}
+
+// Reset anchor styles
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Reset form elements
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+// Button-specific reset
+button {
+  cursor: pointer;
+}
+
+// Ensure responsive media elements
+img,
+video,
+picture,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Reset blockquote and q styles
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+}
+
+// Reset headings and inline text elements
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+strong,
+em {
+  margin: 0;
+  font-weight: inherit;
+}
