@@ -1,0 +1,19 @@
+// @abstracts/_functions.scss
+
+@use 'sass:math';
+
+/**
+ * Converts a pixel value to rem using a fixed base font size of 16px.
+ * This function helps in creating responsive designs and ensures that font sizes
+ * and other layout properties scale correctly across different screen sizes.
+ *
+ * @function fn-rem
+ * @param {Number} $px - The pixel value to convert to rem (e.g., 16 for 16px).
+ * @returns {Number} - The equivalent rem value, calculated by dividing the pixel value by 16.
+ *
+ * @example
+ *   rem(32) // returns 2rem
+ */
+@function fn-rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
