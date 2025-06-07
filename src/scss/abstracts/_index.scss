@@ -1,7 +1,6 @@
 //@abstracts/_index.scss
 
-@forward 'fn-px-to-rem';
-@forward 'mix-media';
-@forward 'mix-flex';
-@forward 'mix-visuality';
+@forward 'functions';
+@forward '@abstracts/variables';
+@forward '@abstracts/mixins';
 @forward 'animations';

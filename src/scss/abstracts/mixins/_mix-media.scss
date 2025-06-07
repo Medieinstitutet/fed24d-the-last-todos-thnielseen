@@ -2,7 +2,7 @@
 
 // === IMPORTS ===
 @use 'sass:map';
-@use 'var-breakpoints' as *;
+@use '@abstracts/variables/var-breakpoints' as *;
 
 /**
  * @mixin mix-media
