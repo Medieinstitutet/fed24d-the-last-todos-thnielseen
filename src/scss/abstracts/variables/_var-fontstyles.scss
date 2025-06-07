@@ -1,0 +1,34 @@
+:root {
+  --ff-bebas-neue: 'Bebas Neue', sans-serif;
+  --ff-fira-mono: 'Fira Mono', monospace;
+  --ff-karla: 'Karla', sans-serif;
+  --ff-lora: 'Lora', serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+$font-styles: (
+  h1: (
+    family: var(--ff-bebas-neue),
+    weight: var(--fw-regular),
+    size: 3rem,
+    letter-spacing: 0.5rem,
+    text-align: center,
+    color: green,
+  ),
+  heading: (
+    family: var(--ff-lora),
+    weight: var(--fw-regular),
+    letter-spacing: 0.15rem,
+    color: green,
+  ),
+  base: (
+    family: var(--ff-Karla),
+    weight: var(--fw-regular),
+    line-height: 1.3,
+    font-size: 14px,
+    color: rgb(7, 78, 7),
+  ),
+);
