@@ -1,0 +1,36 @@
+:root {
+  // === radius ===
+  --radius-s: 0.25rem;
+  --radius-m: 0.5rem;
+  --radius-l: 1rem;
+
+  // === sizes (common sizes: width, height, padding, margin) ===
+
+  --size-2xs: 0.25rem;
+  --size-xs: 0.5rem;
+  --size-s: 0.75rem;
+  --size-m: 1rem;
+  --size-l: 1.5rem;
+  --size-xl: 2rem;
+  --size-2xl: 3rem;
+  --size-3xl: 4rem;
+
+  // === spacing helpers (x or y - led) ===
+  --space-x-2xs: 0 var(--size-2xs);
+  --space-x-xs: 0 var(--size-xs);
+  --space-x-s: 0 var(--size-s);
+  --space-x-m: 0 var(--size-m);
+  --space-x-l: 0 var(--size-l);
+  --space-x-xl: 0 var(--size-xl);
+  --space-x-2xl: 0 var(--size-2xl);
+  --space-x-3xl: 0 var(--size-3xl);
+
+  --space-y-2xs: var(--size-2xs) 0;
+  --space-y-xs: var(--size-xs) 0;
+  --space-y-s: var(--size-s) 0;
+  --space-y-m: var(--size-m) 0;
+  --space-y-l: var(--size-l) 0;
+  --space-y-xl: var(--size-xl) 0;
+  --space-y-2xl: var(--size-2xl 0);
+  --space-y-3xl: var(--size-3xl 0);
+}

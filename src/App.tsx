@@ -1,5 +1,5 @@
 // === IMPORTS ===
-import './App.css'
+import './App.scss'
 import { useState } from 'react'
 
 import Todos from './data/Todos'
@@ -64,24 +64,32 @@ function App() {
             completed: !todo.completed,
             completedAt: !todo.completed ? new Date() : undefined,
           }
-        : todo
+        : todo,
     )
     saveTodos(updated)
   }
 
   // === RENDER ===
   return (
-    <main className="app">
-      <h1 className="app-title">Todo app</h1>
+    <>
+      <header className="app__header">
+        <h1 className="app__title">Todo app</h1>
+      </header>
 
-      <section className="todo-form">
-        <AddNewTodo onAdd={handleAdd} />
-      </section>
+      <main className="app__main">
+        <section className="todo-form">
+          <AddNewTodo onAdd={handleAdd} />
+        </section>
 
-      <section className="todo-list">
-        <DisplayTodo myTodos={myTodos} toggleCompleted={toggleCompleted} />
-      </section>
-    </main>
+        <section className="todo-list">
+          <DisplayTodo myTodos={myTodos} toggleCompleted={toggleCompleted} />
+        </section>
+      </main>
+
+      <footer className="app__footer">
+        <p>@ tess_prog 2025</p>
+      </footer>
+    </>
   )
 }
 

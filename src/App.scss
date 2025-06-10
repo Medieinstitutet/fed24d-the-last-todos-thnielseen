@@ -1,0 +1,30 @@
+.app {
+  width: 100%;
+  max-width: 35rem;
+
+  @include mix-flex-column();
+  justify-self: center;
+  gap: var(--radius-s);
+
+  padding: var(--size-m) var(--size-xs);
+  border-radius: var(--radius-l);
+
+  background-color: var(--clr-bg-app);
+
+  &__header {
+    height: 5.3rem;
+    @include mix-flex(center, start);
+  }
+
+  &__main {
+    width: 100%;
+    @include mix-flex-column();
+    gap: var(--size-2xl);
+  }
+
+  &__footer {
+    width: 100%;
+    @include mix-flex-column();
+    padding-top: var(--size-m);
+  }
+}
