@@ -1,23 +1,30 @@
+// src/scss/variables/_var-fontstyles.scss
+@use '../functions' as *;
 :root {
+  // === font families ===
   --ff-bebas-neue: 'Bebas Neue', sans-serif;
   --ff-fira-mono: 'Fira Mono', monospace;
   --ff-karla: 'Karla', sans-serif;
   --ff-lora: 'Lora', serif;
 
+  // === font weights ===
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
 
+  // === base font sizes ===
   --fs-base-default: 14px;
   --fs-base-mobile: 16px;
   --fs-base-tablet: 18px;
   --fs-base-desktop: 20px;
 
-  --ls-s: 0.15rem;
-  --ls-m: 0.25;
+  // === letter-spacing ===
+  --ls-s: 0.08rem;
+  --ls-m: 0.25rem;
   --ls-l: 0.5rem;
 }
 
+// === semantic font styles map ===
 $font-styles: (
   h1: (
     family: var(--ff-bebas-neue),
@@ -31,7 +38,7 @@ $font-styles: (
     family: var(--ff-lora),
     weight: var(--fw-regular),
     size: 2rem,
-    letter-spacing: var(--ls-s),
+    letter-spacing: var(--ls-m),
     line-height: 1.3,
     color: var(--clr-heading),
   ),
@@ -39,7 +46,26 @@ $font-styles: (
     family: var(--ff-karla),
     weight: var(--fw-regular),
     line-height: 1.3,
-    font-size: 14px,
+    font-size: var(--fs-base-default),
     color: var(--clr-text-dark),
+  ),
+  form: (
+    family: var(--ff-fira-mono),
+    weight: var(--fw-medium),
+    letter-spacing: var(--ls-s),
+    color: var(--clr-text-form),
+  ),
+  placeholder: (
+    family: var(--ff-fira-mono),
+    weight: var(--fw-medium),
+    letter-spacing: var(--ls-s),
+    color: var(--clr-text-placeholder),
+  ),
+  button: (
+    family: var(--ff-fira-mono),
+    weight: var(--fw-bold),
+    size: fn-rem(14),
+    letter-spacing: var(--ls-m),
+    color: var(--clr-text-form),
   ),
 );

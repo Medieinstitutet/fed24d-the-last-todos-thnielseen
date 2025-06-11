@@ -1,9 +1,35 @@
 :root {
-  // === backgrounds ===
+  // === background colors ===
   --clr-bg-window: #86bba2;
-  --clr-bg-app: #def9ece2;
+  --clr-bg-app: #def9ec;
+  --clr-section: #f9fefc;
+  --clr-bg-input: #effcf5;
 
-  // === text ===
-  --clr-heading: #3a5f4e;
+  // === text colors ===
+  --clr-heading: #2e5644;
   --clr-text-dark: #304f40;
+  --clr-text-form: #2e5644;
+  --clr-text-input: hsl(152 100% 19%);
+  --clr-text-placeholder: #68917d;
+
+  // === button colors ===
+  --clr-button-bg-default: #80b39c;
+  --clr-button-bg-default-state: #9fc6b5;
+  --clr-button-text-default: #13201a;
+
+  --clr-button-bg-quick-dark: #264034;
+  --clr-button-bg-quick-light: #80b39c;
+
+  --clr-button-bg-date: #f7e4ce;
+  --clr-button-bg-date-state: #f8e8d5;
+  --clr-button-bg-date-active: #f3d8b8;
+  --button-text-date: #945d19;
+
+  --clr-button-bg-cancel: #9e8fac;
+  --clr-button-bg-cancel-state: #b9aec3;
+  --clr-button-text-cancel: #382e42;
+
+  --clr-button-bg-add: #847294;
+  --clr-button-bg-add-state: #ab9fb7;
+  --clr-button-text-add: #140127;
 }
