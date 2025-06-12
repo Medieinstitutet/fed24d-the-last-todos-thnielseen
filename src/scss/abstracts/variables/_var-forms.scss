@@ -11,12 +11,15 @@
   --radius-ui: 48px; // Circular UI element radius
   --radius-circle: 50%; // Perfect circle (used e.g. for round buttons)
   --size-ui: 48px; // Standard size for square/round buttons
-
+--padding-ui: 2px;
   // === focus and border helpers ===
   --offset-focus: 2px; // Space between component and focus outline
   --border-transparent: 2px solid transparent; // Placeholder border to avoid layout shift
   --border-focus: 2px solid #956a7d; // Visible outline for focus state
+  --border-ui: 2px solid #264034;
+  --border-dateinput: 2px solid #945d19;
 
   // === active state visual ===
   --button-active-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25); // Pressed-in shadow
+
 }

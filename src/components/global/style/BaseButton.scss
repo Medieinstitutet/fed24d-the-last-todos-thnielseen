@@ -1,46 +1,4 @@
-:root {
-  --button-scale: 1.05;
-  --text-scale: 1.05;
-  --icon-scale: 1.1;
-  --active-scale: 0.95;
-
-  --radius-ui: 48px;
-  --radius-circle: 50%;
-
-  --border-transparent: 2px solid transparent;
-  --border-ui: 2px solid #264034;
-  --border-focus: 2px solid #956a7d;
-
-  --clr-button-bg-default: #80b39c;
-  --clr-button-bg-default-state: #9fc6b5;
-  --clr-button-text-default: #13201a;
-
-  --clr-button-bg-quick-dark: #264034;
-  --clr-button-bg-quick-light: #80b39c;
-
-  --clr-button-bg-date: #f7e4ce;
-  --clr-button-bg-date-state: #f8e8d5;
-  --clr-button-bg-date-active: #f3d8b8;
-  --button-text-date: #945d19;
-
-  --clr-button-bg-cancel: #9e8fac;
-  --clr-button-bg-cancel-state: #b9aec3;
-  --clr-button-text-cancel: #382e42;
-
-  --clr-button-bg-add: #847294;
-  --clr-button-bg-add-state: #ab9fb7;
-  --clr-button-text-add: #140127;
-
-  --offset-focus: 2px;
-
-  --size-ui: 48px;
-  --radius-ui: 48px;
-  --radius-cirle: 50%;
-  --ui-border: 2px solid #264034;
-  --ui-padding: 2px;
-
-  --button-active-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
-}
+// src/componenyd/global/style/BaseButton.scss
 
 button {
   width: 100%;
