@@ -1,6 +1,6 @@
 // === IMPORTS ===
 import type { FC } from 'react'
-import { BaseButton } from './global/BaseButton'
+import { BaseButton } from '../global/BaseButton'
 
 // === PROPS ===
 interface FullAddTodoProps {
@@ -120,7 +120,7 @@ export const FullAddTodo: FC<FullAddTodoProps> = ({
 
       <div className="actions">
         <BaseButton
-          type="reset"
+          type="button"
           onClick={handleCancel}
           text="Cancel"
           className="add"

@@ -1,10 +1,10 @@
 // === IMPORTS ===
 import { useState } from 'react'
 import type { FC } from 'react'
-import { QuickAddTodo } from './QuickAddTodo'
-import { FullAddTodo } from './FullAddTodo'
-import Todo from '../models/Todo'
-import { BaseButton } from './global/BaseButton'
+import { QuickAddTodo } from '../add/QuickAddTodo'
+import { FullAddTodo } from '../add/FullAddTodo'
+import Todo from '../../models/Todo'
+import { BaseButton } from '../global/BaseButton'
 
 // === PROPS ===
 interface AddTodoProps {

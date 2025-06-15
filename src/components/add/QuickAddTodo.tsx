@@ -2,7 +2,7 @@
 
 // === IMPORTS ===
 import type { FC } from 'react'
-import { BaseButton } from './global/BaseButton'
+import { BaseButton } from '../global/BaseButton'
 
 // === PROPS ===
 interface QuickAddTodoProps {

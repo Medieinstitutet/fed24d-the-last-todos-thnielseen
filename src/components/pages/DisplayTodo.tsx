@@ -1,7 +1,7 @@
 // === IMPORTS ===
 import type { FC } from 'react'
-import type Todo from '../models/Todo'
-import { formatDate } from '../utils/formatDate'
+import type Todo from '../../models/Todo'
+import { formatDate } from '../../utils/formatDate'
 
 // === PROPS ===
 interface DisplayTodoProps {
