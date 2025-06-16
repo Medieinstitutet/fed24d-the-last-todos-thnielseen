@@ -1,28 +1,22 @@
-// src/componenyd/global/style/BaseButton.scss
-
 button {
   width: 100%;
   min-width: var(--size-ui);
   min-height: var(--size-ui);
-  @include mix-flex();
-  gap: var(--size-2xs);
-
   padding: var(--space-x-xs);
-
   border: var(--border-transparent);
   border-radius: var(--radius-m);
-
-  @include mix-fontstyle(button);
+  @include mix-flex();
+  gap: var(--size-2xs);
   text-transform: uppercase;
+  @include mix-fontstyle(button);
 
-  .icon {
-    height: 100%;
-    max-width: min-content;
-    @include mix-flex();
+  &__icon {
     font-size: fn-rem(25);
+    @include mix-flex();
+    max-width: min-content;
   }
 
-  .text {
+  &__text {
     @include mix-flex();
 
     @include mix-media(mobile) {
@@ -33,10 +27,11 @@ button {
   &:hover {
     transform: scale(var(--button-scale));
 
-    .icon {
+    &__icon {
       transform: scale(var(--icon-scale));
     }
-    .text {
+
+    &__text {
       transform: scale(var(--text-scale));
     }
   }
@@ -47,116 +42,21 @@ button {
     outline-offset: var(--offset-focus);
     transform: scale(var(--button-scale));
 
-    .icon {
+    &__icon {
       transform: scale(var(--icon-scale));
     }
-    .text {
+
+    &__text {
       transform: scale(var(--text-scale));
     }
   }
 
   &:active {
     animation: shrink 0.2s ease;
-    .text,
-    .icon {
+
+    &__icon,
+    &__text {
       animation: shrink 0.2s ease;
     }
-  }
-}
-
-.defaultbutton {
-  color: var(--clr-button-text-default);
-  background-color: var(--clr-button-bg-default);
-
-  &:hover {
-    background-color: var(--clr-button-bg-default-state);
-  }
-  &:focus,
-  &:focus-visible {
-    background-color: var(--clr-button-bg-default-state);
-  }
-
-  &:active {
-    background-color: var(--clr-button-bg-default-state);
-  }
-}
-
-.quickbutton {
-  max-width: var(--radius-ui);
-  max-height: var(--size-ui);
-  border-radius: var(--radius-cirle);
-  background-color: var(--clr-button-bg-quick-light);
-  color: var(--clr-button-bg-quick-dark);
-
-  &-icon.icon {
-    font-size: fn-rem(30);
-    border-radius: var(--radius-cirle);
-  }
-
-  &:hover {
-    background-color: var(--clr-button-bg-quick-dark);
-    color: var(--clr-button-bg-quick-light);
-  }
-
-  &:focus,
-  &:focus-visible {
-    background-color: var(--clr-button-bg-quick-dark);
-    color: var(--clr-button-bg-quick-light);
-    outline: none;
-    border: var(--border-focus);
-  }
-}
-
-.datebutton {
-  background-color: var(--clr-button-bg-date);
-  color: var(--button-text-date);
-  width: 100%;
-  &:hover {
-    background-color: var(--clr-button-bg-date-state);
-  }
-
-  &:focus,
-  &:focus-visible {
-    background-color: var(--clr-button-bg-date-state);
-  }
-
-  &.active {
-    background-color: var(--clr-button-bg-date-active);
-    box-shadow: var(--button-active-shadow);
-    transform: var(--active-scale);
-  }
-}
-
-.cancelbutton {
-  color: var(--clr-button-text-cancel);
-  background-color: var(--clr-button-bg-cancel);
-
-  &:hover {
-    background-color: var(--clr-button-bg-cancel-state);
-  }
-  &:focus,
-  &:focus-visible {
-    background-color: var(--clr-button-bg-cancel-state);
-  }
-
-  &:active {
-    background-color: var(--clr-button-bg-cancel-state);
-  }
-}
-
-.addbutton {
-  color: var(--clr-button-text-add);
-  background-color: var(--clr-button-bg-add);
-
-  &:hover {
-    background-color: var(--clr-button-bg-add-state);
-  }
-  &:focus,
-  &:focus-visible {
-    background-color: var(--clr-button-bg-add-state);
-  }
-
-  &:active {
-    background-color: var(--clr-button-bg-add-state);
   }
 }

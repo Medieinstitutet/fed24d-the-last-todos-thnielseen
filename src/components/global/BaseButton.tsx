@@ -10,47 +10,37 @@ interface BaseButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>
   icon?: string
   text?: string
-  className?: string
-  variant?: 'quick' | 'default' | 'date' | 'add' | 'cancel'
+  baseClass: string
   ariaLabel?: string
   isActive?: boolean
 }
 
 /**
  * === BaseButton Component ===
- * A reusable button component with support for optional icon, text, active state, and accessibility.
+ * Reusable button using BEM-based class names via baseClass prop.
  *
- * @param {('button' | 'submit')} [type='button'] - Button type attribute.
- * @param {MouseEventHandler<HTMLButtonElement>} [onClick] - Callback for click events.
- * @param {string} [icon] - Optional Material Symbols icon name.
- * @param {string} [text] - Optional text to display inside the button.
- * @param {string} [variant='primary'] - Button visual variant.
- * @param {string} [ariaLabel] - ARIA label for screen readers.
- * @param {boolean} [isActive] - Adds 'active' class to indicate current/selected.
- * @returns {JSX.Element} Rendered button element.
+ * @param baseClass - BEM block name (e.g., "add__quick-button")
+ * @returns A button element with optional icon and text.
  */
 export const BaseButton: FC<BaseButtonProps> = ({
   type = 'button',
   onClick,
   icon,
   text,
-  variant,
+  baseClass,
   ariaLabel,
   isActive = false,
 }) => {
+  const className = `${baseClass}${isActive ? ' active' : ''}`
+
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`${variant}button ${isActive ? ' active' : ''}`}
-      aria-label={ariaLabel}
-    >
+    <button type={type} onClick={onClick} className={className} aria-label={ariaLabel}>
       {icon && (
-        <span className={`material-symbols-rounded ${variant}button-icon icon `} aria-hidden="true">
+        <span className={`${baseClass}__icon material-symbols-rounded`} aria-hidden="true">
           {icon}
         </span>
       )}
-      {text && <span className={`${variant}button-text text`}>{text}</span>}
+      {text && <span className={`${baseClass}__text`}>{text}</span>}
     </button>
   )
 }
