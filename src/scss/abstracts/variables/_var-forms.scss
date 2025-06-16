@@ -1,25 +1,24 @@
-// src/scss/variables/_var-forms.scss
-
 :root {
-  // === scale transforms for interaction (hover/focus/active) ===
-  --button-scale: 1.05; // Enlarges button slightly on hover/focus
-  --text-scale: 1.05; // Enlarges button text on hover/focus
-  --icon-scale: 1.1; // Enlarges icon on hover/focus
-  --active-scale: 0.95; // Shrinks button slightly on active/click
+  --button-scale: 1.05;
+  --text-scale: 1.05;
+  --icon-scale: 1.1;
+  --active-scale: 0.95;
 
-  // === component-specific radius and size ===
-  --radius-ui: 48px; // Circular UI element radius
-  --radius-circle: 50%; // Perfect circle (used e.g. for round buttons)
-  --size-ui: 48px; // Standard size for square/round buttons
---padding-ui: 2px;
-  // === focus and border helpers ===
-  --offset-focus: 2px; // Space between component and focus outline
-  --border-transparent: 2px solid transparent; // Placeholder border to avoid layout shift
-  --border-focus: 2px solid #956a7d; // Visible outline for focus state
-  --border-ui: 2px solid #264034;
+  --size-ui: 48px;
+  --radius-ui: 48px;
+  --radius-circle: 50%;
+  --padding-ui: 3px;
+
+  --offset-focus: 2px;
+  --border-transparent: 2px solid transparent;
+  --border-focus: 2px solid #956a7d;
+  --border-ui: 2px solid #006134;
   --border-dateinput: 2px solid #945d19;
 
-  // === active state visual ===
-  --button-active-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25); // Pressed-in shadow
+  --button-active-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
 
+  --clr-bg-input: #effcf5;
+  --clr-bg-input-date: #fbf3e9;
+  --clr-text-date: hsl(33, 71%, 25%);
+  --border-input-date: 2px solid #945d19;
 }
