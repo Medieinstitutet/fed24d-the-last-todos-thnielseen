@@ -1,8 +1,11 @@
-// === IMPORTS ===
+// components/FullAddTodo.tsx
 import type { FC } from 'react'
 import { BaseButton } from '../global/BaseButton'
+import { DatePicker } from './DatePicker'
+import { getTodayDate, getTomorrowDate, getSuggestedFutureDate } from './DateUtils'
+import { BaseInput } from '../global/BaseInput'
+import { BaseForm } from '../global/BaseForm'
 
-// === PROPS ===
 interface FullAddTodoProps {
   title: string
   setTitle: React.Dispatch<React.SetStateAction<string>>
@@ -10,28 +13,13 @@ interface FullAddTodoProps {
   setDescription: React.Dispatch<React.SetStateAction<string>>
   dueDate?: string
   setDueDate: React.Dispatch<React.SetStateAction<string | undefined>>
-  showCustomDate: boolean
+  selectedShortcut: 'today' | 'tomorrow' | 'other' | null
+  setSelectedShortcut: React.Dispatch<React.SetStateAction<'today' | 'tomorrow' | 'other' | null>>
   handleDateShortcut: (option: 'today' | 'tomorrow' | 'other') => void
   handleCancel: () => void
   handleAdd: (e: React.FormEvent) => void
 }
 
-/** === FullAddTodo Component ===
- * A detailed input form for creating a new Todo with title, deadline, and description.
- *
- * @component
- * @param {string} title - The current todo title input value.
- * @param {function} setTitle - State updater for the todo title.
- * @param {string} description - The current todo description.
- * @param {function} setDescription - State updater for the description.
- * @param {string} [dueDate] - Optional selected deadline in string format.
- * @param {function} setDueDate - State updater for dueDate string.
- * @param {boolean} showCustomDate - Whether to display the custom date input.
- * @param {function} handleDateShortcut - Handles quick date options ('today', 'tomorrow', 'other').
- * @param {function} handleCancel - Called when the cancel button is clicked.
- * @param {function} handleAdd - Called on form submit to add the todo.
- * @returns {JSX.Element} The rendered form with title, date picker, description, and action buttons.
- */
 export const FullAddTodo: FC<FullAddTodoProps> = ({
   title,
   setTitle,
@@ -39,101 +27,69 @@ export const FullAddTodo: FC<FullAddTodoProps> = ({
   setDescription,
   dueDate,
   setDueDate,
-  showCustomDate,
-  handleDateShortcut,
+  selectedShortcut,
+  setSelectedShortcut,
   handleCancel,
   handleAdd,
 }) => {
+  const handleClick = (option: 'today' | 'tomorrow' | 'other') => {
+    setSelectedShortcut(option)
+    if (option === 'today') {
+      setDueDate(getTodayDate())
+    } else if (option === 'tomorrow') {
+      setDueDate(getTomorrowDate())
+    } else if (option === 'other' && !dueDate) {
+      setDueDate(getSuggestedFutureDate())
+    }
+  }
+
   return (
-    <fieldset className="fieldset full-add" aria-label="Add new todo">
-      <legend className="legend sr-only">Add new todo</legend>
+    <BaseForm baseClass="add__full" legend="Add new todo" onSubmit={handleAdd}>
+      <BaseInput
+        id="todoTitle"
+        name="title"
+        label="What to do?"
+        baseClass="add__full-field"
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
+      />
 
-      <div className="field">
-        <label htmlFor="todoTitle" className="label">
-          What to do?
-        </label>
-        <input
-          id="todoTitle"
-          name="title"
-          className="input"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
+      <DatePicker
+        selectedShortcut={selectedShortcut}
+        onSelect={handleClick}
+        dueDate={dueDate}
+        onDueDateChange={setDueDate}
+      />
 
-      <p className="label date">Choose deadline:</p>
-      <div className="buttons date">
-        <BaseButton
-          type="button"
-          onClick={() => handleDateShortcut('today')}
-          text="Today"
-          className="date"
-          ariaLabel="Set deadline to today"
-        />
-        <BaseButton
-          type="button"
-          onClick={() => handleDateShortcut('tomorrow')}
-          text="Tomorrow"
-          className="date"
-          ariaLabel="Set deadline to tomorrow"
-        />
-        <BaseButton
-          type="button"
-          onClick={() => handleDateShortcut('other')}
-          text="Other"
-          className="date"
-          ariaLabel="Choose custom deadline"
-        />
-      </div>
+      <BaseInput
+        id="todoDescription"
+        name="description"
+        label="Add description:"
+        baseClass="add__full-field"
+        as="textarea"
+        rows={3}
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
 
-      {showCustomDate && (
-        <div className="field deadline-input">
-          <label htmlFor="todoDueDate" className="label sr-only">
-            Deadline (optional)
-          </label>
-          <input
-            id="todoDueDate"
-            name="dueDate"
-            type="date"
-            className="input date"
-            value={dueDate || ''}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-        </div>
-      )}
-
-      <div className="field description">
-        <label htmlFor="todoDescription" className="label">
-          Add description:
-        </label>
-        <textarea
-          id="todoDescription"
-          name="description"
-          className="input description"
-          rows={3}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-
-      <div className="actions">
+      <div className="add__full__actions">
         <BaseButton
           type="button"
           onClick={handleCancel}
           text="Cancel"
-          className="add"
+          baseClass="add__full__actions-cancel-button"
           ariaLabel="Cancel todo"
         />
         <BaseButton
           type="submit"
           onClick={handleAdd}
           text="Add todo"
-          className="add"
+          baseClass="add__full__actions-add-button"
           ariaLabel="Add todo"
         />
       </div>
-    </fieldset>
+    </BaseForm>
   )
 }
