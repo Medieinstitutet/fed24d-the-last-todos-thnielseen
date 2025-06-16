@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 import Todos from './data/Todos'
 import type Todo from './models/Todo'
-import { AddNewTodo } from './components/AddNewTodo'
-import { DisplayTodo } from './components/DisplayTodo'
+import { AddNewTodo } from './components/pages/AddNewTodo'
+import { DisplayTodo } from './components/pages/DisplayTodo'
 
 /**
  * === App Component ===
@@ -77,9 +77,7 @@ function App() {
       </header>
 
       <main className="app__main">
-        <section className="todo-form">
-          <AddNewTodo onAdd={handleAdd} />
-        </section>
+        <AddNewTodo onAdd={handleAdd} />
 
         <section className="todo-list">
           <DisplayTodo myTodos={myTodos} toggleCompleted={toggleCompleted} />
