@@ -36,12 +36,25 @@ export const DisplayTodo: FC<DisplayTodoProps> = ({ myTodos, toggleCompleted }) 
               </button>
 
               <div className="todo-text">
-                <p><strong>Title:</strong> {todo.title}</p>
-                <p><strong>Description:</strong> {todo.description ?? '—'}</p>
-                <p><strong>Due date:</strong> {todo.dueDate ? formatDate(todo.dueDate) : '—'}</p>
-                <p><strong>Completed:</strong> {todo.completed ? 'true' : 'false'}</p>
-                <p><strong>Created at:</strong> {formatDate(todo.createdAt)}</p>
-                <p><strong>Completed at:</strong> {todo.completedAt ? formatDate(todo.completedAt) : '—'}</p>
+                <p>
+                  <strong>Title:</strong> {todo.title}
+                </p>
+                <p>
+                  <strong>Description:</strong> {todo.description ?? '—'}
+                </p>
+                <p>
+                  <strong>Due date:</strong> {todo.dueDate ? formatDate(todo.dueDate) : '—'}
+                </p>
+                <p>
+                  <strong>Completed:</strong> {todo.completed ? 'true' : 'false'}
+                </p>
+                <p>
+                  <strong>Created at:</strong> {formatDate(todo.createdAt)}
+                </p>
+                <p>
+                  <strong>Completed at:</strong>{' '}
+                  {todo.completedAt ? formatDate(todo.completedAt) : '—'}
+                </p>
               </div>
             </div>
           </li>

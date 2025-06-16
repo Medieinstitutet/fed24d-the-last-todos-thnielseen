@@ -9,7 +9,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src/scss'),
       '@base': path.resolve(__dirname, 'src/scss/base'),
-      '@abstracts': path.resolve(__dirname, 'src/scss/abstracts')
+      '@abstracts': path.resolve(__dirname, 'src/scss/abstracts'),
     },
   },
   css: {

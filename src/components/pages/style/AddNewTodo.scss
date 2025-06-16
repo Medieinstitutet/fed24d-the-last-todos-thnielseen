@@ -6,7 +6,7 @@
   border-radius: var(--radius-s);
   background-color: var(--clr-section);
 
-  &__title{
+  &__title {
     @include mix-visually-hidden();
   }
 

@@ -34,19 +34,17 @@ body {
 
   padding: var(--size-m);
 
-background-color: var(--clr-bg-window);
-
-
+  background-color: var(--clr-bg-window);
 
   @include mix-media(mobile) {
     padding: var(--size-l) var(--size-m);
   }
   @include mix-media(tablet) {
-      padding: var(--size-xl) var(--size-m);
+    padding: var(--size-xl) var(--size-m);
   }
 
   @include mix-media(desktop) {
-     padding: var(--size-2xl) var(--size-m);
+    padding: var(--size-2xl) var(--size-m);
   }
 }
 
@@ -60,7 +58,6 @@ h1 {
   @include mix-media(tablet) {
     font-size: 4rem;
   }
-
 }
 
 h2 {

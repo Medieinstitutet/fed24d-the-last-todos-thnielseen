@@ -71,7 +71,7 @@ export const AddNewTodo: FC<AddTodoProps> = ({ onAdd }) => {
 
   return (
     <section className="add">
-      <h2 className='add__title'>Add new todo</h2>
+      <h2 className="add__title">Add new todo</h2>
       {!showDetails && <QuickAddTodo title={title} setTitle={setTitle} onAdd={createTodo} />}
 
       <div className="add__toggle">
