@@ -1,0 +1,19 @@
+textarea,
+input {
+  min-height: var(--size-ui);
+  width: 100%;
+  padding: var(--padding-ui);
+  padding-left: var(--size-s);
+  border: var(--border-ui);
+  border-radius: var(--radius-ui);
+  background-color: var(--clr-bg-input);
+
+  &::placeholder {
+    @include mix-fontstyle(placeholder);
+  }
+}
+
+label {
+  font-weight: var(--fw-bold);
+  line-height: 1.7;
+}
