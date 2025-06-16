@@ -1,8 +1,11 @@
 // src/components/QuickAddTodo.tsx
 
 // === IMPORTS ===
+
 import type { FC } from 'react'
 import { BaseButton } from '../global/BaseButton'
+import { BaseInput } from '../global/BaseInput'
+import { BaseForm } from '../global/BaseForm'
 
 // === PROPS ===
 interface QuickAddTodoProps {
@@ -22,29 +25,27 @@ interface QuickAddTodoProps {
  */
 export const QuickAddTodo: FC<QuickAddTodoProps> = ({ title, setTitle, onAdd }) => {
   return (
-    <fieldset className="fieldset" aria-label="Quick add Todo">
-      <div className="field quick">
-        <label htmlFor="todoTitleQuick" className="label sr-only">
-          Todo title
-        </label>
-        <input
-          id="todoTitleQuick"
-          name="title"
-          className="input quick"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="What to do?"
-          required
-        />
-        <BaseButton
-          type="submit"
-          onClick={onAdd}
-          icon="add_task"
-          className="quick"
-          ariaLabel="Quick add todo"
-        />
-      </div>
-    </fieldset>
+    <BaseForm baseClass="add__quick" legend="Add quick" onSubmit={onAdd}>
+      <BaseInput
+        id="todoQuickTitle"
+        name="title"
+        type="text"
+        baseClass="add__quick-field"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        label="What to do?"
+        placeholder="What to do?"
+        required
+        button={
+          <BaseButton
+            type="submit"
+            onClick={onAdd}
+            icon="add_task"
+            baseClass="add__quick-button"
+            ariaLabel="Quick add todo"
+          />
+        }
+      />
+    </BaseForm>
   )
 }
