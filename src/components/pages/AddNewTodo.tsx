@@ -1,4 +1,5 @@
 // === IMPORTS ===
+import './style/AddNewTodo.scss'
 import { useState } from 'react'
 import type { FC } from 'react'
 import { QuickAddTodo } from '../add/QuickAddTodo'
@@ -22,22 +23,28 @@ export const AddNewTodo: FC<AddTodoProps> = ({ onAdd }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [dueDate, setDueDate] = useState<string | undefined>()
-  const [showCustomDate, setShowCustomDate] = useState(false)
   const [showDetails, setShowDetails] = useState(false)
+  const [selectedShortcut, setSelectedShortcut] = useState<'today' | 'tomorrow' | 'other' | null>(
+    null,
+  )
 
   /** Handles predefined date shortcuts and toggles custom date input */
   const handleDateShortcut = (option: 'today' | 'tomorrow' | 'other') => {
+    const today = new Date()
+
     if (option === 'today') {
-      const today = new Date().toISOString().split('T')[0]
-      setDueDate(today)
-      setShowCustomDate(false)
+      setDueDate(today.toISOString().split('T')[0])
     } else if (option === 'tomorrow') {
-      const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0]
-      setDueDate(tomorrow)
-      setShowCustomDate(false)
-    } else {
-      setDueDate(undefined)
-      setShowCustomDate(true)
+      const tomorrow = new Date(today)
+      tomorrow.setDate(today.getDate() + 1)
+      setDueDate(tomorrow.toISOString().split('T')[0])
+    } else if (option === 'other') {
+      // Om användaren inte har valt något datum, sätt ett förslag 3 dagar fram
+      if (!dueDate) {
+        const future = new Date(today)
+        future.setDate(today.getDate() + 3)
+        setDueDate(future.toISOString().split('T')[0])
+      }
     }
   }
 
@@ -53,7 +60,6 @@ export const AddNewTodo: FC<AddTodoProps> = ({ onAdd }) => {
     setTitle('')
     setDescription('')
     setDueDate(undefined)
-    setShowCustomDate(false)
     setShowDetails(false)
   }
 
@@ -64,16 +70,19 @@ export const AddNewTodo: FC<AddTodoProps> = ({ onAdd }) => {
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <section className="add">
+      <h2 className='add__title'>Add new todo</h2>
       {!showDetails && <QuickAddTodo title={title} setTitle={setTitle} onAdd={createTodo} />}
 
-      <BaseButton
-        type="button"
-        onClick={() => setShowDetails((prev) => !prev)}
-        className="detail"
-        icon={showDetails ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-        text={showDetails ? 'Hide details' : 'Add detailed todo'}
-      />
+      <div className="add__toggle">
+        <BaseButton
+          type="button"
+          onClick={() => setShowDetails((prev) => !prev)}
+          baseClass="add__toggle-button"
+          icon={showDetails ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+          text={showDetails ? 'Add quick ' : 'Add details'}
+        />
+      </div>
 
       {showDetails && (
         <FullAddTodo
@@ -83,12 +92,13 @@ export const AddNewTodo: FC<AddTodoProps> = ({ onAdd }) => {
           setDescription={setDescription}
           dueDate={dueDate}
           setDueDate={setDueDate}
-          showCustomDate={showCustomDate}
+          selectedShortcut={selectedShortcut}
+          setSelectedShortcut={setSelectedShortcut}
           handleDateShortcut={handleDateShortcut}
           handleCancel={() => setShowDetails(false)}
           handleAdd={handleSubmit}
         />
       )}
-    </form>
+    </section>
   )
 }
