@@ -79,9 +79,7 @@ function App() {
       <main className="app__main">
         <AddNewTodo onAdd={handleAdd} />
 
-        <section className="todo-list">
-          <DisplayTodo myTodos={myTodos} toggleCompleted={toggleCompleted} />
-        </section>
+        <DisplayTodo myTodos={myTodos} toggleCompleted={toggleCompleted} />
       </main>
 
       <footer className="app__footer">

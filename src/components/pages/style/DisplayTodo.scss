@@ -1,0 +1,68 @@
+.display {
+  width: 95%;
+  max-width: 27rem;
+  padding: var(--size-s);
+  @include mix-flex-column();
+  border-radius: var(--radius-s);
+  background-color: var(--clr-section);
+
+  &__todos {
+    width: 100%;
+    max-width: 23rem;
+
+    &-title {
+      margin-bottom: 1rem;
+      @include mix-fontstyle(h1);
+      text-align: center;
+    }
+
+    &-list {
+      @include mix-flex-column();
+      gap: var(--size-s);
+
+      .todo {
+        width: 100%;
+        padding: var(--size-xs);
+        border-radius: var(--radius-m);
+        background-color: var( --clr-bg-todo);
+
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: var(--size-xs);
+        align-items: start;
+
+        &__button-toggle {
+          grid-column: 1;
+          grid-row: 1;
+          width: var(--size-ui);
+          height: var(--size-ui);
+
+          &__icon {
+            font-size: 1.5rem;
+          }
+        }
+
+        &__title {
+          padding-top: fn-rem(12);
+          grid-column: 2 / span 2;
+          grid-row: 1;
+          width: 100%;
+          font-size: 1.2rem;
+
+          @include mix-media(mobile) {
+            font-size: 1.5rem;
+            padding-top: fn-rem(6);
+          }
+        }
+
+        // === Övriga rader ===
+        &__description,
+        &__due,
+        &__created,
+        &__completed {
+          grid-column: 2 / span 2;
+        }
+      }
+    }
+  }
+}
