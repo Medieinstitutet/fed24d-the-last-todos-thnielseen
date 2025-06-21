@@ -4,10 +4,12 @@ import type Todo from '../../models/Todo'
 import { TodoList } from '../display/TodoList'
 
 import './style/DisplayTodo.scss'
+
 // === PROPS ===
 interface DisplayTodoProps {
   myTodos: Todo[]
   toggleCompleted: (id: string) => void
+  deleteTodo: (id: string) => void
 }
 
 /** === DisplayTodo Component ===
@@ -18,10 +20,10 @@ interface DisplayTodoProps {
  * @param {Function} toggleCompleted - Function to toggle a todo's completion state by ID.
  * @returns {JSX.Element} Rendered list of todos with details and toggle buttons.
  */
-export const DisplayTodo: FC<DisplayTodoProps> = ({ myTodos, toggleCompleted }) => {
+export const DisplayTodo: FC<DisplayTodoProps> = ({ myTodos, toggleCompleted, deleteTodo }) => {
   return (
     <section className="display">
-      <TodoList myTodos={myTodos} toggleCompleted={toggleCompleted} />
+      <TodoList myTodos={myTodos} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo} />
     </section>
   )
 }

@@ -69,6 +69,11 @@ function App() {
     saveTodos(updated)
   }
 
+  const deleteTodo = (id: string) => {
+    const updated = myTodos.filter((todo) => todo.id !== id)
+    saveTodos(updated)
+  }
+
   // === RENDER ===
   return (
     <>
@@ -79,7 +84,7 @@ function App() {
       <main className="app__main">
         <AddNewTodo onAdd={handleAdd} />
 
-        <DisplayTodo myTodos={myTodos} toggleCompleted={toggleCompleted} />
+        <DisplayTodo myTodos={myTodos} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo} />
       </main>
 
       <footer className="app__footer">

@@ -1,13 +1,16 @@
 // src/components/display/TodoList.tsx
 
 import type { FC } from 'react'
+import { useState } from 'react'
 import type Todo from '../../models/Todo'
 import { formatDate } from '../../utils/formatDate'
 import { BaseButton } from '../global/BaseButton'
+import { DeleteTodo } from './DeleteTodo'
 
 interface TodoListProps {
   myTodos: Todo[]
   toggleCompleted: (id: string) => void
+  deleteTodo: (id: string) => void
 }
 /**
  * === TodoList Component ===
@@ -23,7 +26,20 @@ interface TodoListProps {
  * @returns {JSX.Element} List of todo items rendered with structured layout.
  */
 
-export const TodoList: FC<TodoListProps> = ({ myTodos, toggleCompleted }) => {
+export const TodoList: FC<TodoListProps> = ({ myTodos, toggleCompleted, deleteTodo }) => {
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [selectedTodoId, setSelectedTodoId] = useState<string | null>(null)
+
+  const cancelDelete = () => {
+    setShowConfirm(false)
+    setSelectedTodoId(null)
+  }
+
+  const confirmDelete = (id: string) => {
+    deleteTodo(id)
+    cancelDelete()
+  }
+
   return (
     <article className="display__todos">
       <h2 className="display__todos-title">My todos</h2>
@@ -60,6 +76,25 @@ export const TodoList: FC<TodoListProps> = ({ myTodos, toggleCompleted }) => {
                 <span>Done: </span>
                 <span>{formatDate(todo.completedAt)}</span>
               </p>
+            )}
+
+            <BaseButton
+              baseClass="todo__button-delete"
+              type="button"
+              icon="delete"
+              ariaLabel="Delete todo"
+              onClick={() => {
+                setSelectedTodoId(todo.id)
+                setShowConfirm(true)
+              }}
+            />
+
+            {showConfirm && selectedTodoId === todo.id && (
+              <DeleteTodo
+                title={todo.title}
+                onCancel={cancelDelete}
+                onConfirm={() => confirmDelete(todo.id)}
+              />
             )}
           </li>
         ))}
