@@ -1,29 +1,40 @@
-// === IMPORTS ===
-import type { FC } from 'react'
-import type Todo from '../../models/Todo'
-import { TodoList } from '../display/TodoList'
-
+// src/components/pages/DisplayTodo.tsx
 import './style/DisplayTodo.scss'
+import { useState, useEffect } from 'react'
+import { TodoList } from '../display/TodoList'
+import { FilterBar } from '../display/filterbar/FilterBar'
+import type Todo from '../../models/Todo'
+import type { StatusFilter } from '../display/filterbar/filterBarUtils'
 
-// === PROPS ===
 interface DisplayTodoProps {
   myTodos: Todo[]
   toggleCompleted: (id: string) => void
   deleteTodo: (id: string) => void
 }
 
-/** === DisplayTodo Component ===
- * Renders a list of Todo items with their metadata and a button to toggle completion state.
- *
- * @component
- * @param {Todo[]} myTodos - Array of Todo objects to display.
- * @param {Function} toggleCompleted - Function to toggle a todo's completion state by ID.
- * @returns {JSX.Element} Rendered list of todos with details and toggle buttons.
- */
-export const DisplayTodo: FC<DisplayTodoProps> = ({ myTodos, toggleCompleted, deleteTodo }) => {
+export const DisplayTodo: React.FC<DisplayTodoProps> = ({
+  myTodos,
+  toggleCompleted,
+  deleteTodo,
+}) => {
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
+  const [visibleTodos, setVisibleTodos] = useState<Todo[]>([])
+
+  useEffect(() => {
+    // Initiera direkt
+    setVisibleTodos(myTodos)
+  }, [myTodos])
+
   return (
     <section className="display">
-      <TodoList myTodos={myTodos} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo} />
+      <FilterBar
+        todos={myTodos}
+        statusFilter={statusFilter}
+        setStatusFilter={setStatusFilter}
+        setFilteredTodos={setVisibleTodos}
+      />
+
+      <TodoList myTodos={visibleTodos} toggleCompleted={toggleCompleted} deleteTodo={deleteTodo} />
     </section>
   )
 }
