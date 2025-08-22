@@ -45,7 +45,7 @@ export const TodoList: FC<TodoListProps> = ({ myTodos, toggleCompleted, deleteTo
       <h2 className="display__todos-title">My todos</h2>
       <ul className="display__todos-list">
         {myTodos.map((todo) => (
-          <li key={todo.id} className={`display__todos-item todo${todo.completed ? ' done' : ''}`}>
+          <li key={todo.id} className={`display__todos-item todo${todo.completed ? ' done' : ''} `}>
             <BaseButton
               icon={todo.completed ? 'task_alt' : 'circle'}
               onClick={() => toggleCompleted(todo.id)}
@@ -59,6 +59,7 @@ export const TodoList: FC<TodoListProps> = ({ myTodos, toggleCompleted, deleteTo
 
             {todo.dueDate && (
               <p className="todo__due">
+                <p className="todo__overdue">Overdue!</p>
                 <span>Due by: </span>
                 <span>{formatDate(todo.dueDate)}</span>
               </p>

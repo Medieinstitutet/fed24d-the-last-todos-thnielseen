@@ -1,4 +1,4 @@
-// components/display/FilterTodo.tsx
+// src/components/display/FilterTodo.tsx
 import type { FC } from 'react'
 import type { StatusFilter } from './filterBarUtils'
 import { BaseInput } from '../../global/BaseInput'
@@ -9,12 +9,13 @@ interface Props {
 }
 
 export const FilterTodo: FC<Props> = ({ statusFilter, setStatusFilter }) => {
-  const options: StatusFilter[] = ['all', 'today', 'week', 'month', 'completed']
+  const options: StatusFilter[] = ['all', 'today', 'week', 'month', 'overdue', 'completed']
   const labels: Record<StatusFilter, string> = {
     all: 'All',
     today: 'Today',
     week: 'This week',
     month: 'This month',
+    overdue: 'Overdue',
     completed: 'Completed',
   }
 
@@ -22,7 +23,7 @@ export const FilterTodo: FC<Props> = ({ statusFilter, setStatusFilter }) => {
     <BaseInput
       label="Filter todos"
       id="filter-select"
-      baseClass="display__filter-bar__filter"
+      baseClass="filter-bar__filter"
       as="select"
       value={statusFilter}
       onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
