@@ -1,7 +1,6 @@
 // === IMPORTS ===
 import './App.scss'
 import { useState } from 'react'
-
 import Todos from './data/Todos'
 import type Todo from './models/Todo'
 import { AddNewTodo } from './components/pages/AddNewTodo'
@@ -79,6 +78,8 @@ function App() {
     <>
       <header className="app__header">
         <h1 className="app__title">Todo app</h1>
+<div className='logo'>
+</div>
       </header>
 
       <main className="app__main">

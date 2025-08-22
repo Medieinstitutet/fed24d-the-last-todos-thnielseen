@@ -1,6 +1,7 @@
 # 📌 Rättningsrapport – fed24d-the-last-todos-thnielseen
 
 ## 🎯 Uppgiftens Krav:
+
 # Inlämningsuppgift Todo
 
 I denna inlämningsuppgift kommer ni att skapa er egen todo-lista i en react-applikation.
@@ -34,7 +35,7 @@ npm i
 och
 
 ```shell
-npm run dev 
+npm run dev
 ```
 
 för att köra projektet.
@@ -45,11 +46,10 @@ för att köra projektet.
 - Gör ert bästa att inte stressa. Lättare sagt än gjort, jag vet. Men ingen mår bättre av att stressa.
 - Ha roligt, skratta när det blir fel och fortsätt att vara nyfiken :)
 
-
 ## 🔍 ESLint-varningar:
 
-
 ## 🏆 **Betyg: VG**
+
 📌 **Motivering:** Koden uppfyller alla krav för betyg VG och visar en hög grad av förmåga att använda React, TypeScript, och annan modern frontend-teknik. Todo-listan är välimplementerad med möjlighet att skapa, hantera och sortera todos, både med markering för klara och oklara uppgifter. Komponenterna är bra strukturerade, och 'lifting state up' har använts för att dela upp ansvaret mellan komponenterna. Dessutom används ett grafiskt ramverk och egen välstrukturerad CSS som använder flex och grid på ett bra sätt.
 
 💡 **Förbättringsförslag:**  

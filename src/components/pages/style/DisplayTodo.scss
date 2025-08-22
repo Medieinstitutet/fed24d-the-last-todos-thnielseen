@@ -21,10 +21,11 @@
       gap: var(--size-s);
 
       .todo {
+        position: relative;
         width: 100%;
         padding: var(--size-xs);
         border-radius: var(--radius-m);
-        background-color: var( --clr-bg-todo);
+        background-color: var(--clr-bg-todo);
 
         display: grid;
         grid-template-columns: auto 1fr auto;
@@ -62,7 +63,86 @@
         &__completed {
           grid-column: 2 / span 2;
         }
+
+        &__button-delete {
+          grid-column: 3;
+          justify-self: end;
+        }
+
+        &__delete {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          padding: var(--size-s);
+          border-radius: var(--radius-m);
+          background-color: var(--clr-bg-todo);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          &-msg {
+            height: max-content;
+            height: 100%;
+            font-size: 1.2rem;
+            background-color: var(--clr-bg-todo-delete);
+            text-align: center;
+            border-radius: var(--radius-m);
+            @include mix-flex-column();
+            gap: var(--size-m);
+
+            &-del {
+              @include mix-flex-column();
+              background-color: var(--clr-bg-todo-delete);
+              border-radius: var(--radius-m);
+            }
+
+            &-title {
+              @include mix-fontstyle(heading);
+              font-weight: var(--fw-bold);
+              font-size: 1rem;
+            }
+          }
+
+          &-actions {
+            @include mix-flex();
+            grid-area: var(--size-ui);
+          }
+        }
       }
+    }
+  }
+}
+
+.checkbox {
+  height: 48px;
+  width: 48px;
+  border: 2px solid;
+  background-color: var(--clr-bg-input);
+}
+
+.checkbox-checked {
+  background-color: var(--clr-text-dark);
+}
+
+.display__filter-bar {
+  width: 100%;
+  @include mix-fontstyle(form);
+  @include mix-flex-column();
+
+  &__filter {
+    width: 100%;
+    max-width: 21rem;
+    border: var(--border-ui);
+    border-radius: var(--radius-ui);
+    padding: var(--space-x-m);
+    @include mix-flex();
+    &__label {
+      @include mix-visually-hidden();
+    }
+    &__select {
+      width: 100%;
+      background-color: inherit;
+      border: none;
     }
   }
 }
